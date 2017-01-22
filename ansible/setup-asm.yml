@@ -1,0 +1,22 @@
+---
+- hosts: all
+  gather_facts: yes
+  sudo: yes
+
+  vars:
+    app_user: mirrorapp
+    app_path: /home/mirrorapp/asm-app
+    nodejs_version: "7.x"
+
+  vars_prompt:
+    - name: app_user_password
+      prompt: "Create your MirrorApp password"
+      private: no
+
+  roles:
+    - system
+    - user
+    - geerlingguy.nodejs
+    - fubarhouse.yarn
+    - application
+    - splashscreen

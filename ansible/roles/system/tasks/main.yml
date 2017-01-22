@@ -1,0 +1,28 @@
+- name: Install/update some basic tools
+  apt: name={{ item }} state=present
+  with_items:
+    - unattended-upgrades
+    - build-essential
+    - matchbox
+    - python3
+    - python3-dev
+    - python3-pip
+    - libssl-dev
+    - libffi-dev
+    - libasound-dev
+    - portaudio19-dev
+    - systemd
+    - git
+    - mcrypt
+    - bluetooth
+    - bluez
+    - openssl
+    - libbluetooth-dev
+    - libudev-dev
+    - vlc
+    - vlc-nox
+    - vlc-data
+    - nodejs
+    - x11-xserver-utils
+    - xserver-xorg
+    - whois

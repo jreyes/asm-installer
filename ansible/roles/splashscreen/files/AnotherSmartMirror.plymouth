@@ -1,0 +1,8 @@
+[Plymouth Theme]
+Name=AnotherSmartMirror
+Description=Another Smart Mirror Splash
+ModuleName=script
+
+[script]
+ImageDir=/usr/share/plymouth/themes/AnotherSmartMirror
+ScriptFile=/usr/share/plymouth/themes/AnotherSmartMirror/AnotherSmartMirror.script

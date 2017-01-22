@@ -1,0 +1,20 @@
+- name: Install/update python dependencies
+  pip: name={{ item }} state=present executable=pip3
+  with_items:
+    - requests
+    - pyaudio
+    - SpeechRecognition
+
+- name: Build the Another Smart Mirror app
+  become: yes
+  become_user: "{{ app_user }}"
+  command: chdir={{ app_path }} yarn install
+
+- name: Copy screenly systemd units
+  template:
+    src: "{{ item }}.j2"
+    dest: "/etc/systemd/system/{{ item }}"
+  with_items:
+    - X.service
+    - matchbox.service
+    - asm-electron.service

@@ -1,0 +1,29 @@
+[Unit]
+Description=Another Smart Mirror Electron Application
+After=matchbox.service
+
+[Service]
+WorkingDirectory={{ app_path }}
+User={{ app_user }}
+
+Environment=DISPLAY=:0.0
+
+# Fix white flickering in omxplayer
+Environment=NOREFRESH=1
+
+Environment=PYTHONPATH={{ app_path }}
+
+# Don't activate screensaver
+ExecStartPre=/usr/bin/xset s off
+
+# Disable DPMS (Energy Star) features
+ExecStartPre=/usr/bin/xset -dpms
+
+# Don't blank the video device
+ExecStartPre=/usr/bin/xset s noblank
+
+ExecStart=/usr/bin/npm run start:desktop
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
