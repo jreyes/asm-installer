@@ -1,3 +1,4 @@
+---
 - name: Install/update python dependencies
   pip: name={{ item }} state=present executable=pip3
   with_items:

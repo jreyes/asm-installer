@@ -72,8 +72,15 @@ else
   fi
 fi
 
-ansible-galaxy install -r ansible/requirements.yml
-ansible-playbook -i "localhost", -vvv -c local ansible/setup-asm.yml
+if git clone https://github.com/jreyes/asm-installer.git; then
+    echo "*** Another Smart Mirror installer cloned ***"
+else
+    echo "*** Unable to clone the Another Smart Mirror installer ***"
+    exit 1;
+fi
+
+ansible-galaxy install -r asm-installer/ansible/requirements.yml
+ansible-playbook -i "localhost", -vvv -c local asm-installer/ansible/setup-asm.yml
 
 set +x
 echo "Installation completed."
