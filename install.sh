@@ -44,8 +44,6 @@ else
   fi
 fi
 
-git clone https://github.com/jreyes/asm-installer
-
 if ansible --version &> /dev/null ; then
   echo "Ansible is already installed."
 else
@@ -70,6 +68,11 @@ else
     echo "Something went wrong, please have a look at the script output"
     exit 1
   fi
+fi
+
+if [[ -d "asm-installer" ]]; then
+    echo "Removing existing installer directory"
+    rm -rf asm-installer
 fi
 
 if git clone https://github.com/jreyes/asm-installer.git; then
