@@ -1,12 +1,5 @@
 #!/bin/bash -e
 
-if [[ $EUID -ne 0 ]]; then
-    echo "You are NOT running this script as root."
-    echo "You should."
-    echo "Really."
-    exit 1
-fi
-
 if [[ ! -x $(which lsb_release 2>/dev/null) ]]; then
   echo "ERROR: lsb_release is not installed"
   echo "Cannot evaluate the platform"
@@ -27,12 +20,10 @@ if git --version &> /dev/null ; then
   echo "Git is already installed."
 else
   if [[ "Debian" =~ $os_VENDOR || "Raspbian" =~ $os_VENDOR || "Ubuntu" =~ $os_VENDOR || "LinuxMint" =~ $os_VENDOR ]]; then
-    apt-get update
-    apt-get install -y git
+    sudo apt-get update
+    sudo apt-get install -y git
   else
     echo "*** Unsupported platform ${os_VENDOR}: ${os_VERSION} ***"
-    echo "*** Please send a pull-request or open an issue ***"
-    echo "*** on https://github.com/ceph/ceph-ansible/ ***"
     exit 1
   fi
 
@@ -48,17 +39,15 @@ if ansible --version &> /dev/null ; then
   echo "Ansible is already installed."
 else
   if [[ "Debian" =~ $os_VENDOR || "Raspbian" =~ $os_VENDOR ]]; then
-    apt-get update
-    apt-get install -y ansible
+    sudo apt-get update
+    sudo apt-get install -y ansible
   elif [[ "Ubuntu" =~ $os_VENDOR || "LinuxMint" =~ $os_VENDOR ]]; then
-    apt-get install -y software-properties-common
-    add-apt-repository -y ppa:ansible/ansible
-    apt-get update
-    apt-get install -y ansible
+    sudo apt-get install -y software-properties-common
+    sudo add-apt-repository -y ppa:ansible/ansible
+    sudo apt-get update
+    sudo apt-get install -y ansible
   else
     echo "*** Unsupported platform ${os_VENDOR}: ${os_VERSION} ***"
-    echo "*** Please send a pull-request or open an issue ***"
-    echo "*** on https://github.com/ceph/ceph-ansible/ ***"
     exit 1
   fi
 
