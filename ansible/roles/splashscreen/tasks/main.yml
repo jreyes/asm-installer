@@ -1,9 +1,12 @@
 ---
-- name: Create splashscreen directory
+- name: Create splashscreen directories
   file:
-    path: "/usr/share/plymouth/themes/AnotherSmartMirror"
+    path: "{{ item }}"
     recurse: yes
     state: directory
+  with_items:
+    - /usr/share/plymouth/themes/AnotherSmartMirror
+    - /etc/plymouth
   become: true
 
 - name: Copy splashscreen theme
@@ -17,6 +20,9 @@
     - AnotherSmartMirror.plymouth
   become: true
 
-- name: Enables splashscreen
-  command: plymouth-set-default-theme -R AnotherSmartMirror
+- name: Update Plymouth
+  copy:
+    src: 'AnotherSmartMirror.conf'
+    dest: '/etc/plymouth/plymouthd.conf'
   become: true
+  notify: [ 'Update initramfs' ]

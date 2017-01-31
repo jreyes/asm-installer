@@ -72,7 +72,7 @@ else
 fi
 
 cd asm-installer
-ansible-galaxy install -r ansible/requirements.yml
+sudo ansible-galaxy install -r ansible/requirements.yml
 ansible-playbook -i "localhost", -vvv -c local ansible/setup-asm.yml
 cd ..
 

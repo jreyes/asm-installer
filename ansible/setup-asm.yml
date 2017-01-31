@@ -6,6 +6,7 @@
     app_user: "{{ ansible_user }}"
     app_path: "/home/{{ ansible_user }}/asm-app"
     nodejs_version: "7.x"
+    plymouth__theme: "AnotherSmartMirror"
 
   roles:
     - system
