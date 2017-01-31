@@ -5,8 +5,8 @@
   vars:
     app_user: "{{ ansible_user }}"
     app_path: "/home/{{ ansible_user }}/asm-app"
+    electron_path: "/home/{{ ansible_user }}/.electron"
     nodejs_version: "7.x"
-    plymouth__theme: "AnotherSmartMirror"
 
   roles:
     - system

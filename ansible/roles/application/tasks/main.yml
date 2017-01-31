@@ -6,6 +6,14 @@
     - pyaudio
     - SpeechRecognition
 
+- name: Clean artifacts
+  file:
+    state: absent
+    path: "{{ artifact_path }}/"
+  with_items:
+    - {{ app_path }}
+    - {{ electron_path }}
+
 - name: Clone the Another Smart Mirror app
   git:
     repo: git@github.com:jreyes/asm-app.git
