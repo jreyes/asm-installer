@@ -71,8 +71,10 @@ else
     exit 1;
 fi
 
-ansible-galaxy install -r asm-installer/ansible/requirements.yml
-ansible-playbook -i "localhost", -vvv -c local asm-installer/ansible/setup-asm.yml
+cd asm-installer
+ansible-galaxy install -r ansible/requirements.yml
+ansible-playbook -i "localhost", -vvv -c local ansible/setup-asm.yml
+cd ..
 
 set +x
 echo "Installation completed."

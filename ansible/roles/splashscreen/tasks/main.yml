@@ -1,13 +1,22 @@
 ---
+- name: Create splashscreen directory
+  file:
+    path: "/usr/share/plymouth/themes/AnotherSmartMirror"
+    recurse: yes
+    state: directory
+  become: true
+
 - name: Copy splashscreen theme
   copy:
     src: "{{ item }}"
     dest: "/usr/share/plymouth/themes/AnotherSmartMirror/{{ item }}"
     force: no
   with_items:
-    - AnotherSmartMirror.jpg
+    - AnotherSmartMirror.png
     - AnotherSmartMirror.script
     - AnotherSmartMirror.plymouth
+  become: true
 
 - name: Enables splashscreen
   command: plymouth-set-default-theme -R AnotherSmartMirror
+  become: true

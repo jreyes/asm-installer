@@ -6,9 +6,16 @@
     - pyaudio
     - SpeechRecognition
 
+- name: Clone the Another Smart Mirror app
+  git:
+    repo: git@github.com:jreyes/asm-app.git
+    dest: "{{ app_path }}"
+    accept_hostkey: yes
+    force: yes
+    recursive: no
+    key_file: "/home/{{ app_user }}/.ssh/id_rsa.github"
+
 - name: Build the Another Smart Mirror app
-  become: yes
-  become_user: "{{ app_user }}"
   command: chdir={{ app_path }} yarn install
 
 - name: Copy screenly systemd units
@@ -19,3 +26,4 @@
     - X.service
     - matchbox.service
     - asm-electron.service
+  become: true
