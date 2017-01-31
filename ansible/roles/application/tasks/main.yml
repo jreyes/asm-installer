@@ -8,11 +8,11 @@
 
 - name: Clean artifacts
   file:
+    path: "{{ item }}"
     state: absent
-    path: "{{ artifact_path }}/"
   with_items:
-    - {{ app_path }}
-    - {{ electron_path }}
+    - "{{ app_path }}"
+    - "{{ electron_path }}"
 
 - name: Clone the Another Smart Mirror app
   git:
