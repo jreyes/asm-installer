@@ -6,6 +6,7 @@
     app_user: "{{ ansible_user }}"
     app_path: "/home/{{ ansible_user }}/asm-app"
     electron_path: "/home/{{ ansible_user }}/.electron"
+    lightdm_autologin_user: "{{ ansible_user }}"
     nodejs_version: "7.x"
 
   roles:
@@ -13,3 +14,4 @@
     - geerlingguy.nodejs
     - application
     - splashscreen
+    - gantsign.lightdm
