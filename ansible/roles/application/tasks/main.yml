@@ -6,13 +6,15 @@
     - pyaudio
     - SpeechRecognition
 
-- name: Clean artifacts
+- name: Clean electron path
   file:
-    path: "{{ item }}"
+    path: "{{ electron_path }}"
     state: absent
-  with_items:
-    - "{{ app_path }}"
-    - "{{ electron_path }}"
+
+- name: Clean application path
+  file:
+    path: "{{ app_path }}"
+    state: absent
 
 - name: Clone the Another Smart Mirror app
   git:
@@ -24,7 +26,7 @@
     key_file: "/home/{{ app_user }}/.ssh/id_rsa.github"
 
 - name: Build the Another Smart Mirror app
-  command: chdir={{ app_path }} yarn install
+  command: chdir={{ app_path }} npm update | npm install
 
 - name: Copy screenly systemd units
   template:
