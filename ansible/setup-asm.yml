@@ -11,6 +11,5 @@
   roles:
     - system
     - geerlingguy.nodejs
-    - fubarhouse.yarn
     - application
     - splashscreen
