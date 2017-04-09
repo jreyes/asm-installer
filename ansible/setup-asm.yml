@@ -11,7 +11,8 @@
 
   roles:
     - system
-    - geerlingguy.nodejs
+    - role: geerlingguy.nodejs
+      sudo: yes
     - application
     - splashscreen
     - gantsign.lightdm
