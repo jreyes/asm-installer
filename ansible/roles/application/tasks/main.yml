@@ -1,15 +1,14 @@
 ---
 - name: Install/update python dependencies
-  pip: name={{ item }} state=present executable=pip3
+  pip: name={{ item }} state=present executable=pip3 extra_args=--upgrade
   with_items:
+    - pip
     - requests
-    - pyaudio
     - SpeechRecognition
-
-- name: Clean electron path
-  file:
-    path: "{{ electron_path }}"
-    state: absent
+    - setuptools
+    - wheel
+    - pocketsphinx
+  become: true
 
 - name: Clean application path
   file:
@@ -35,5 +34,4 @@
   with_items:
     - X.service
     - matchbox.service
-    - asm-electron.service
   become: true

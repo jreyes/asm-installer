@@ -28,4 +28,14 @@
     - x11-xserver-utils
     - xserver-xorg
     - whois
+    - sox
+    - alsa-base
+    - alsa-utils
+    - gcc
+    - automake
+    - autoconf
+    - libtool
+    - bison
+    - libpulse-dev
+    - swig
   become: true
