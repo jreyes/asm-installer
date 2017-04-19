@@ -1,0 +1,28 @@
+---
+- name: Generate encrypted password
+  shell: mkpasswd --method=SHA-512 {{ app_user_password }}
+  register: encrypted_user_password
+
+- name: Create "mirror" user/group
+  user:
+    name: "{{ app_user }}"
+    password: {{ encrypted_user_password.stdout }}
+    state: present
+    append: yes
+    shell: "/bin/bash"
+    update_password: always
+  become: true
+
+- name: Ensures autologin dir exists
+  file:
+    path: "/etc/systemd/system/getty@tty1.service.d"
+    state: directory
+  become: true
+
+- name: Setup the autologin
+  copy:
+    src: "{{ item }}"
+    dest: "/etc/systemd/system/getty@tty1.service.d/{{ item }}"
+  with_items:
+    - override.conf
+  become: true

@@ -8,8 +8,15 @@
     lightdm_autologin_user: "mirror"
     nodejs_version: "7.x"
 
+  vars_prompt:
+    - name: "app_user_password"
+      prompt: "Enter a password for the user"
+      private: yes
+      confirm: yes
+
   roles:
     - system
+    - user
     - role: geerlingguy.nodejs
       sudo: yes
     - application
