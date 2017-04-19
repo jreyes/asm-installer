@@ -8,6 +8,9 @@
     name: "{{ app_user }}"
     password: "{{ encrypted_user_password.stdout }}"
     state: present
+    generate_ssh_key: yes
+    ssh_key_bits: 2048
+    ssh_key_file: "/home/{{ app_user }}/.ssh/id_rsa"
     append: yes
     shell: "/bin/bash"
     update_password: always
