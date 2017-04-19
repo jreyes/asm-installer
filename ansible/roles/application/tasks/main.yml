@@ -8,7 +8,6 @@
     - setuptools
     - wheel
     - pocketsphinx
-  become: true
 
 - name: Clean application path
   file:
@@ -35,4 +34,12 @@
     - X.service
     - matchbox.service
     - asm-electron.service
-  become: true
+
+- name: Set the correct user/group to directory
+  file:
+    path: "/home/{{ app_user }}"
+    owner: "{{ app_user }}"
+    group: "{{ app_user }}"
+    mode: 0775
+    state: directory
+    recurse: yes

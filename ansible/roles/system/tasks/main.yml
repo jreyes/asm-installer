@@ -39,4 +39,3 @@
     - bison
     - libpulse-dev
     - swig
-  become: true

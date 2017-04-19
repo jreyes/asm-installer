@@ -7,7 +7,6 @@
   with_items:
     - /usr/share/plymouth/themes/AnotherSmartMirror
     - /etc/plymouth
-  become: true
 
 - name: Copy splashscreen theme
   copy:
@@ -18,11 +17,9 @@
     - AnotherSmartMirror.png
     - AnotherSmartMirror.script
     - AnotherSmartMirror.plymouth
-  become: true
 
 - name: Update Plymouth
   copy:
     src: 'AnotherSmartMirror.conf'
     dest: '/etc/plymouth/plymouthd.conf'
-  become: true
   notify: [ 'Update initramfs' ]

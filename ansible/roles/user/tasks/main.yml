@@ -14,13 +14,11 @@
     append: yes
     shell: "/bin/bash"
     update_password: always
-  become: true
 
 - name: Ensures autologin dir exists
   file:
     path: "/etc/systemd/system/getty@tty1.service.d"
     state: directory
-  become: true
 
 - name: Setup the autologin
   copy:
@@ -28,4 +26,3 @@
     dest: "/etc/systemd/system/getty@tty1.service.d/{{ item }}"
   with_items:
     - override.conf
-  become: true
