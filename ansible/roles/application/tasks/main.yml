@@ -34,4 +34,5 @@
   with_items:
     - X.service
     - matchbox.service
+    - asm-electron.service
   become: true

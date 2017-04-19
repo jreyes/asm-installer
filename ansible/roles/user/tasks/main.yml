@@ -6,7 +6,7 @@
 - name: Create "mirror" user/group
   user:
     name: "{{ app_user }}"
-    password: {{ encrypted_user_password.stdout }}
+    password: "{{ encrypted_user_password.stdout }}"
     state: present
     append: yes
     shell: "/bin/bash"
