@@ -8,6 +8,13 @@
     - setuptools
     - wheel
     - pocketsphinx
+    - cherrypy
+    - pyalsaaudio
+    - webrtcvad
+    - pyyaml
+    - coloredlogs
+    - future
+    - pexpect
 
 - name: Clean application path
   file:
