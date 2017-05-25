@@ -1,4 +1,4 @@
 ---
 - src: geerlingguy.nodejs
-- src: williamyeh.oracle-java
+- src: ansiblebit.oracle-java
 - src: gantsign.lightdm

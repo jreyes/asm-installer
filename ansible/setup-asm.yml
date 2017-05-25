@@ -8,7 +8,6 @@
     app_path: "/home/mirror/asm-app"
     lightdm_autologin_user: "mirror"
     nodejs_version: "7.x"
-    java_version: 8
 
   vars_prompt:
     - name: "app_user_password"
@@ -20,7 +19,7 @@
     - system
     - user
     - geerlingguy.nodejs
-    - williamyeh.oracle-java
+    - ansiblebit.oracle-java
     - application
     - splashscreen
     - gantsign.lightdm
