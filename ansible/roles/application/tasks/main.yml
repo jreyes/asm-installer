@@ -28,7 +28,7 @@
     accept_hostkey: yes
     force: yes
     recursive: no
-    key_file: "/home/{{ app_user }}/.ssh/id_rsa.github"
+    key_file: "/home/jreyes/.ssh/id_rsa.github"
 
 - name: Build the Another Smart Mirror app
   command: chdir={{ app_path }} npm install
