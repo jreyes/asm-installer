@@ -2,4 +2,4 @@
 - src: geerlingguy.nodejs
 - src: ansiblebit.oracle-java
 - src: gantsign.lightdm
-- src: triplepoint.mosquitto
+- src: debops.mosquitto

@@ -26,6 +26,7 @@
     - vlc
     - vlc-nox
     - vlc-data
+    - libvlc-dev
     - nodejs
     - x11-xserver-utils
     - xserver-xorg

@@ -15,7 +15,7 @@
     - coloredlogs
     - future
     - pexpect
-    - pythonvlc
+    - python-vlc
     - tenacity
 
 - name: Clean application path
